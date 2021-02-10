@@ -1,0 +1,32 @@
+<h1 class="subheader">Formulario </h1>
+<!--{{user.nombre}}-->
+<form class="mid-form" #userForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="Id">ID</label>
+        <input type="text" name="Id" #id="ngModel" [(ngModel)]="user.id" required />
+        <small *ngIf="!id.valid && id.touched">El ID no es valido</small>
+    </div>
+
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required pattern="[a-zA-Z]+" />
+        <small *ngIf="!nombre.valid && nombre.touched">El Nombre no es valido</small>
+    </div>
+
+    <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellido" required pattern="[a-zA-Z]+" />
+        <small *ngIf="!apellidos.valid && apellidos.touched">El Apellido no es valido</small>
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" required />
+        <small *ngIf="!email.valid && email.touched">El Email no es valido</small>
+    </div>
+
+    <input type="submit" value="Guardar" class="btn btn-success" [disabled]="userForm.invalid" />
+    <div class="clearfix"></div>
+
+
+</form>
